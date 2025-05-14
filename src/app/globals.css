@@ -1,42 +1,113 @@
 :root {
-  --background: #ffffff;
-  --foreground: #171717;
+  /* Cores Principais */
+  --mia-primary: #2F54EB;
+  --mia-secondary: #597EF7;
+  --mia-success: #52C41A;
+  --mia-warning: #FAAD14;
+  --mia-error: #FF4D4F;
+  --mia-text: #1A1A1A;
+  --mia-background: #F5F7FA;
+
+  /* Tipografia */
+  --mia-font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
+  --mia-font-heading: 'Poppins', var(--mia-font-family);
+  
+  /* Espaçamentos */
+  --mia-spacing-unit: 8px;
+  --mia-border-radius: 4px;
+  
+  /* Sombras */
+  --mia-shadow-sm: 0 1px 2px 0 rgb(0 0 0 / 0.05);
+  --mia-shadow-md: 0 4px 6px -1px rgb(0 0 0 / 0.1), 0 2px 4px -2px rgb(0 0 0 / 0.1);
 }
 
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
-  }
-}
+/*** Reset Base ***/
+@import 'antd/dist/reset.css';
 
-html,
-body {
-  max-width: 100vw;
-  overflow-x: hidden;
-}
-
-body {
-  color: var(--foreground);
-  background: var(--background);
-  font-family: Arial, Helvetica, sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-}
-
-* {
+*,
+*::before,
+*::after {
   box-sizing: border-box;
-  padding: 0;
-  margin: 0;
 }
 
-a {
-  color: inherit;
-  text-decoration: none;
+body {
+  font-family: var(--mia-font-family);
+  color: var(--mia-text);
+  background-color: var(--mia-background);
+  line-height: 1.5;
+  -webkit-font-smoothing: antialiased;
 }
 
-@media (prefers-color-scheme: dark) {
-  html {
-    color-scheme: dark;
+/*** Componentes Ant Design Customizados ***/
+/* Botões */
+.ant-btn {
+  border-radius: var(--mia-border-radius) !important;
+  font-weight: 500 !important;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+}
+
+.ant-btn-primary {
+  background-color: var(--mia-primary) !important;
+  border-color: var(--mia-primary) !important;
+}
+
+/* Inputs */
+.ant-input {
+  border-radius: var(--mia-border-radius) !important;
+  padding: calc(var(--mia-spacing-unit) * 1.5) var(--mia-spacing-unit) !important;
+}
+
+/* Cabeçalhos */
+.ant-typography h1,
+.ant-typography h2,
+.ant-typography h3 {
+  font-family: var(--mia-font-heading);
+  font-weight: 700 !important;
+}
+
+h1 {
+  font-size: 2.5rem !important;
+  line-height: 1.2 !important;
+}
+
+h2 {
+  font-size: 2rem !important;
+}
+
+/* Cards */
+.ant-card {
+  border-radius: calc(var(--mia-border-radius) * 2) !important;
+  box-shadow: var(--mia-shadow-md) !important;
+}
+
+/*** Classes Utilitárias Customizadas ***/
+.mia-container {
+  width: 100%;
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 calc(var(--mia-spacing-unit) * 2);
+}
+
+.mia-section {
+  padding: calc(var(--mia-spacing-unit) * 6) 0;
+}
+
+.mia-shadow {
+  box-shadow: var(--mia-shadow-md);
+}
+
+/*** Responsividade ***/
+@media (max-width: 768px) {
+  :root {
+    --mia-spacing-unit: 6px;
+  }
+  
+  h1 {
+    font-size: 2rem !important;
+  }
+  
+  .mia-container {
+    padding: 0 var(--mia-spacing-unit);
   }
 }
